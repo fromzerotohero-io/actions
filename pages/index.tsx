@@ -1,27 +1,43 @@
+import { Chip as MuiChip } from '@material-ui/core'
 import Head from 'next/head'
+import styles from './styles.module.css'
+
+const Chip = (props) => {
+  const className = `${props.className} ${styles.chip}`
+  return (
+    <MuiChip {...props} className={className}></MuiChip>
+  );
+}
+
+const tags = [
+  {label: 'ReactJS', color: 'primary'},
+  {label: 'Hooks', color: 'primary'},
+  {label: 'Fácil', color: 'secondary'},
+  {label: '30 minutos', color: 'secondary'},
+];
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Gestión del estado de un componente ReactJS
         </h1>
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <div>
+          {tags.map(tag => <Chip {...tag} key={tag.label}></Chip>)}
+        </div>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <h3>Objetivo</h3>
+          <p>El equipo de Frontend quiere añadir una nueva funcionalidad: XYZ
+          La tech lead del equipo ha decidido que hará falta gestionar el estado en el componente Z, pero esta vez quiere probar con hooks de React, en concreto con useState.
+          </p>
 
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
@@ -48,36 +64,9 @@ export default function Home() {
         </div>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
+      <div className={styles.side}></div>
 
       <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
         footer {
           width: 100%;
           height: 100px;
@@ -100,28 +89,6 @@ export default function Home() {
         a {
           color: inherit;
           text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
         }
 
         .description {
