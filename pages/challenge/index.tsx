@@ -31,7 +31,7 @@ export default function Challenge() {
       <main className={styles.main}>
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h1 className={styles.title}>
+            <h1 className={`${styles.title} __title`}>
               Gestión del estado de un componente ReactJS
             </h1>
 
