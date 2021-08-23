@@ -11,4 +11,4 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run start &
-      - run: cypress run -q
+      - run: $(npm bin)/cypress run -q
